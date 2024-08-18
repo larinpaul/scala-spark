@@ -7,6 +7,8 @@ object Main {
     println("Hello world!")
     println("Hello world!")
     println("Hello world!")
+    println("We added this VM option in configuration! :)" +
+      "--add-exports java.base/sun.nio.ch=ALL-UNNAMED");
 
     val spark = SparkSession.builder()
       .appName("scala-spark")
