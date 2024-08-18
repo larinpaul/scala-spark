@@ -11,6 +11,7 @@ object Main {
     val spark = SparkSession.builder()
       .appName("scala-spark")
       .master("local[*]")
+      .config("spark.driver.bindAddress", "127.0.0.1")
       .getOrCreate()
 
     val df = spark.read // this returns something called a dataframe
