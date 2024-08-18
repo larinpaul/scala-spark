@@ -14,6 +14,7 @@ object Main {
       .getOrCreate()
 
     val df = spark.read // this returns something called a dataframe
+      .option("header", value = true)
       .csv("data/A.csv")
 
     // dataframes haves actions,
