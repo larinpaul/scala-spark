@@ -19,6 +19,7 @@ object Main {
 
     val df = spark.read // this returns something called a dataframe
       .option("header", value = true)
+      .option("inferSchema", value = true) // this helps infer schema datatypes
       .csv("data/A.csv")
 
     // dataframes haves actions,
@@ -41,7 +42,13 @@ object Main {
     // if we click on Data Source Option, it will lead us to:
     // spark.apache.org/docs/latest/sql-data-sources-csv.html#data-source-option
 
-
+    // Let's explore the schema of the dataframe
+    df.printSchema()
+    // Datatypes on the Spark website
+    // spark.apache.org/docs/latest/sql-ref-datatypes.html
+    // printSchema() returns all strings...
+    // but there is a way to infer the datatypes correctly... inferSchema option!
+    // spark.apache.org/docs/latest/sql-data-sources-csv.html
 
 
 
