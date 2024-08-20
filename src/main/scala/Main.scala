@@ -51,5 +51,16 @@ object Main {
     // spark.apache.org/docs/latest/sql-data-sources-csv.html
 
 
+    // Part 4: The Dataset API
+    // - Dataset is the main abstraction introduced by Spark SQL
+    // - Spark SQL is an abstraction over Spark core's RDDs
+    // - We'll talk about the Spark architecture and execution model later
+    // - The Dataset API defines a DSL
+    // (domain-specific language, declarative, not using Scala functions)
+    // - That's how we tell Spark what to do
+    // - Inspect Spark API within IDE
+    // `type DataFrame = Dataset[Row]`
+    // - `Row` is a generic object (untyped view)
+
   }
 }
