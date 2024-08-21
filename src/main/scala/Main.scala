@@ -62,5 +62,10 @@ object Main {
     // `type DataFrame = Dataset[Row]`
     // - `Row` is a generic object (untyped view)
 
+    // Part 5: DSL (i) Referencing columns
+    // - Mostly when using the API, we work with Columns `col("a") + 5`
+    // - Ways of referencing columns: String, apply, col, $ (implicits)
+    // - Not necessarily bound to DataFrame
+
   }
 }
