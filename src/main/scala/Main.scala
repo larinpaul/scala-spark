@@ -1,6 +1,7 @@
 package org.larinpaul.sparkdev
 
-import org.apache.spark.sql.SparkSession // SparkSession is part of the sql package...
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.col // SparkSession is part of the sql package...
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -66,6 +67,21 @@ object Main {
     // - Mostly when using the API, we work with Columns `col("a") + 5`
     // - Ways of referencing columns: String, apply, col, $ (implicits)
     // - Not necessarily bound to DataFrame
+
+    df.select("Date", "Open", "Close").show()
+    val column = df("Date")
+    col("Date")
+    import spark.implicits._
+    $"Date" // $ operator returns a column
+
+    println("Showing again...")
+    df.select(col("Date"), $"Open", df("Close")).show()
+
+    // this will work took
+    df.select(column, $"Open", df("Close")).show()
+
+    // this will not work because you can't mix up data types and provide only a string here and others as other formats
+//    df.select("Date", $"Open", df("Close")).show()
 
   }
 }
