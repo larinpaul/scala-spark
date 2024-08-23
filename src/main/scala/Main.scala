@@ -1,7 +1,8 @@
 package org.larinpaul.sparkdev
 
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions.col // SparkSession is part of the sql package...
+import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.types.StringType // SparkSession is part of the sql package...
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -69,7 +70,7 @@ object Main {
     // - Not necessarily bound to DataFrame
 
     df.select("Date", "Open", "Close").show()
-    val column = df("Date")
+    val column0 = df("Date")
     col("Date")
     import spark.implicits._
     $"Date" // $ operator returns a column
@@ -78,7 +79,7 @@ object Main {
     df.select(col("Date"), $"Open", df("Close")).show()
 
     // this will work took
-    df.select(column, $"Open", df("Close")).show()
+    df.select(column0, $"Open", df("Close")).show()
 
     // this will not work because you can't mix up data types and provide only a string here and others as other formats
 //    df.select("Date", $"Open", df("Close")).show()
@@ -88,6 +89,18 @@ object Main {
     // - The `Column` class
     // - Functions on columns: `===`, `cast`, `<`, `+`
     // - Reading the reference
+
+    val column = df("Open")
+    val newColumn = column.plus(2.0) // has all the values increased by 2
+    val newColumn1 = column + (2.0)
+    val columnString = column.cast(StringType) // (org.apache.spark.sql.types) SpringType.type
+
+    df.select(column, newColumn, columnString).show()
+    // we can also do this:
+    df.select(column, newColumn, columnString)
+      .filter(newColumn > 2.0)
+
+
 
   }
 }
