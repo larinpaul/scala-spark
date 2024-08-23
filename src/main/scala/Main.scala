@@ -109,5 +109,12 @@ object Main {
     // for equality check between two columns
     // you need to use === because == is used by Scala itself
 
+    df.select(column, newColumn, columnString)
+      .filter(newColumn > 2.0)
+      .filter(newColumn > column)
+//      .filter(newColumn == ) // this won't work because it compares two objects...
+      .filter(newColumn === column) // it will give us an empty dataframe :)
+      .show()
+
   }
 }
