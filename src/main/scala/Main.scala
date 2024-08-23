@@ -99,7 +99,10 @@ object Main {
     // we can also do this:
     df.select(column, newColumn, columnString)
       .filter(newColumn > 2.0)
-
+    // or we can even compare two columns
+    df.select(column, newColumn, columnString)
+      .filter(newColumn > 2.0)
+      .filter(newColumn > column)
 
 
   }
