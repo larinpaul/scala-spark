@@ -103,6 +103,7 @@ object Main {
     df.select(column, newColumn, columnString)
       .filter(newColumn > 2.0)
       .filter(newColumn > column)
+      .show() // don't forget to print this out by using .show() ! :)
 
 
   }
