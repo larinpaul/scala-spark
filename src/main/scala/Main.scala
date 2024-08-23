@@ -104,7 +104,9 @@ object Main {
       .filter(newColumn > 2.0)
       .filter(newColumn > column)
       .show() // don't forget to print this out by using .show() ! :)
-
+    // You can look up all such methods in the IDE,
+    // or on Spark website, Spark 3.5.0 ScalaDoc // sql // Column
+    // for equality you need to use === because == is used by Scala itself
 
   }
 }
