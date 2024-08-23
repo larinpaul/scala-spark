@@ -119,6 +119,9 @@ object Main {
     // By the way, if you transform a column, you will see the name change:
     val newColumn2 = column + 2.0
     // [Open][Open + 2.0][Open]
+    // to give it a more readable name, we can use a method from the Column
+    val newColumnAliased = (column + 2.0).as("OpenIncreasedBy2")
+
 
   }
 }
