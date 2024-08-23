@@ -121,7 +121,7 @@ object Main {
     // [Open][Open + 2.0][Open]
     // to give it a more readable name, we can use a method from the Column
     val newColumnAliased = (column + 2.0).as("OpenIncreasedBy2")
-
+    val columnStringAliased = column.cast(StringType).as("OpenAsString")
 
   }
 }
