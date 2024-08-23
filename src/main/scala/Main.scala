@@ -116,5 +116,9 @@ object Main {
       .filter(newColumn === column) // it will give us an empty dataframe :)
       .show()
 
+    // By the way, if you transform a column, you will see the name change:
+    val newColumn2 = column + 2.0
+    // [Open][Open + 2.0][Open]
+
   }
 }
