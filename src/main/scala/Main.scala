@@ -83,5 +83,11 @@ object Main {
     // this will not work because you can't mix up data types and provide only a string here and others as other formats
 //    df.select("Date", $"Open", df("Close")).show()
 
+    // Part 6: DSL (ii) Column functions
+
+    // - The `Column` class
+    // - Functions on columns: `===`, `cast`, `<`, `+`
+    // - Reading the reference
+
   }
 }
