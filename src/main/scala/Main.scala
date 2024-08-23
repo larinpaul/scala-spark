@@ -106,7 +106,8 @@ object Main {
       .show() // don't forget to print this out by using .show() ! :)
     // You can look up all such methods in the IDE,
     // or on Spark website, Spark 3.5.0 ScalaDoc // sql // Column
-    // for equality you need to use === because == is used by Scala itself
+    // for equality check between two columns
+    // you need to use === because == is used by Scala itself
 
   }
 }
