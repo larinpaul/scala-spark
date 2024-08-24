@@ -1,7 +1,7 @@
 package org.larinpaul.sparkdev
 
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.functions.col
+import org.apache.spark.sql.{SparkSession, functions}
+import org.apache.spark.sql.functions.{col, lit}
 import org.apache.spark.sql.types.StringType // SparkSession is part of the sql package...
 
 object Main {
@@ -127,6 +127,17 @@ object Main {
     // Part 7: DSL (iii) `sql.functions`
     // - `col`, `lit`, `concat`
 
+    // Documentation:
+    // spark.apache.org/docs/latest/api/scala/apache/spark/sql/function$.html
+    // for example:
+    // def lit(literal: Any): Column
+    // Creates a Column of literal value
+
+    val litColumn = lit(2.0)
+    val newColumnString = functions.concat(columnString, lit("Hello World"))
+
+    df.select(column, newColumn, columnString, newColumnString)
+      .show()
 
   }
 }
