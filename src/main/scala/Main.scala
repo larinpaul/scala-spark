@@ -123,5 +123,10 @@ object Main {
     val newColumnAliased = (column + 2.0).as("OpenIncreasedBy2")
     val columnStringAliased = column.cast(StringType).as("OpenAsString")
 
+
+    // Part 7: DSL (iii) `sql.functions`
+    // - `col`, `lit`, `concat`
+
+
   }
 }
