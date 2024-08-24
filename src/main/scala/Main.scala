@@ -137,7 +137,7 @@ object Main {
     val newColumnString = functions.concat(columnString, lit("Hello World"))
 
     df.select(column, newColumn, columnString, newColumnString)
-      .show()
+      .show(truncate = false)
 
   }
 }
