@@ -159,5 +159,8 @@ object Main {
 
     df.selectExpr("cast(Date as string)", "Open + 1.0", "current_timestamp()").show()
 
+    df.createTempView("df")
+    spark.sql("select * from df").show()
+
   }
 }
