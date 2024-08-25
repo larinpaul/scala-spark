@@ -139,5 +139,16 @@ object Main {
     df.select(column, newColumn, columnString, newColumnString)
       .show(truncate = false)
 
+
+    // Part 8: DSL: (iv) Expressions
+
+    // - We have explored the `Column` class and the `org.apache.spark.sql.functions
+    // - There is another way to transform columns (which I do not recommend using)
+    // - We can also write SQL expressions as strings, which will be interpreted at runtime (no compiler safety)
+    // - [SQL built-in functions reference] (https://spark.apache.org/docs/latest/api/sql/index.html)
+
+
+
+
   }
 }
