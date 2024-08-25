@@ -153,7 +153,7 @@ object Main {
     df.select(timestampFromExpression, timestampFromFunctions).show()
 
     // Which functions  are available for these SQL expressions?
-    // They are called SQL build-ins
+    // They are called SQL built-ins
     // spark.apache.org/docs/latest/api/sql/index.html
     // spark.apache.org/docs/latest/api/sql/#current_timestamt
 
