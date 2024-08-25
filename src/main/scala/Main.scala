@@ -152,5 +152,12 @@ object Main {
 
     df.select(timestampFromExpression, timestampFromFunctions).show()
 
+    // Which functions  are available for these SQL expressions?
+    // They are called SQL build-ins
+    // spark.apache.org/docs/latest/api/sql/index.html
+    // spark.apache.org/docs/latest/api/sql/#current_timestamt
+
+    df.selectExpr("cast(Date as string)", "Open + 1.0", "current_timestamp()").show()
+
   }
 }
