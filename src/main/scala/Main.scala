@@ -148,7 +148,7 @@ object Main {
     // - [SQL built-in functions reference] (https://spark.apache.org/docs/latest/api/sql/index.html)
 
     def timestampFromExpression = expr("cast(current_timestamp() as string)")
-    val timestampFromFunctions = current_timestamp().cast(StringType)
+    val timestampFromFunction = current_timestamp().cast(StringType)
 
 
 
