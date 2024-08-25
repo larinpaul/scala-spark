@@ -1,7 +1,7 @@
 package org.larinpaul.sparkdev
 
 import org.apache.spark.sql.{SparkSession, functions}
-import org.apache.spark.sql.functions.{col, lit}
+import org.apache.spark.sql.functions.{col, current_timestamp, expr, lit}
 import org.apache.spark.sql.types.StringType // SparkSession is part of the sql package...
 
 object Main {
@@ -147,8 +147,8 @@ object Main {
     // - We can also write SQL expressions as strings, which will be interpreted at runtime (no compiler safety)
     // - [SQL built-in functions reference] (https://spark.apache.org/docs/latest/api/sql/index.html)
 
-
-
+    def timestampColumn = expr("cast(current_timestamp() as string)")
+    val timestampFromFunctions = current_timestamp().cast(StringType)
 
   }
 }
