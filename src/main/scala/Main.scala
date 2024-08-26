@@ -171,7 +171,16 @@ object Main {
 
 //    df.withColumnRenamed("Open", "open")
 //      .withColumnRenamed("Close", "close") // But there is a smarter way to do this...
-    col("Date").as("date")
+
+    val renameColumns = List(
+      col("Date").as("date"),
+      col("Open").as("open"),
+      col("High").as("high"),
+      col("Low").as("low"),
+      col("Close").as("close"),
+      col("Adj Close").as("adjClose"),
+      col("Volume").as("volume")
+    )
 
 
   }
