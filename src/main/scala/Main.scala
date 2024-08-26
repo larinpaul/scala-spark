@@ -185,8 +185,8 @@ object Main {
     // Let's use vargarg splice
     df.select(renameColumns: _*).show()
 
-    df.columns.map(c => c.toLowerCase())
-
+    // df.columns.map(c => c.toLowerCase())
+    df.select(df.columns.map(c => col(c).as(c.toLowerCase())): _*).show()
 
   }
 }
