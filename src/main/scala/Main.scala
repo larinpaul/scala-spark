@@ -182,6 +182,8 @@ object Main {
       col("Volume").as("volume")
     )
 
+    // Let's use vargarg splice
+    df.select(renameColumns: _*).show()
 
   }
 }
