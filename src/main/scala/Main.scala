@@ -169,8 +169,9 @@ object Main {
     // - Add a column containing the diff between `open` and `close`
     // - Filter to days when the `close` price was more than 10% higher than the open price
 
-    df.withColumnRenamed("Open", "open")
-      .withColumnRenamed("Close", "close") // But there is a smarter way to do this...
+//    df.withColumnRenamed("Open", "open")
+//      .withColumnRenamed("Close", "close") // But there is a smarter way to do this...
+    col("Date").as("date")
 
 
   }
