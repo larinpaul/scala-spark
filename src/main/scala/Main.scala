@@ -195,7 +195,11 @@ object Main {
     stockData.show()
 
     // Filter to days when the `close` price was more than 10% higher than the open price
+    val stockDataFilter = df.select(renameColumns: _*)
+      .withColumn("diff", col("close") - col("open"))
+      .filter(col("close") > col("open") * 1.1)
 
+    stockDataFilter.show()
 
   }
 }
