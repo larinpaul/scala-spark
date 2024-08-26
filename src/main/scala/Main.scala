@@ -162,5 +162,8 @@ object Main {
     df.createTempView("df")
     spark.sql("select * from df").show()
 
+
+    // Part 9: DSL: (v) Rename columns, varargs, withColumn, filter
+
   }
 }
