@@ -188,5 +188,8 @@ object Main {
     // df.columns.map(c => c.toLowerCase())
     df.select(df.columns.map(c => col(c).as(c.toLowerCase())): _*).show()
 
+    val stockDate = df.select(renameColumns: _*)
+      .withColumn("diff", col("close") - col("open"))
+
   }
 }
