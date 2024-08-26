@@ -188,8 +188,14 @@ object Main {
     // df.columns.map(c => c.toLowerCase())
     df.select(df.columns.map(c => col(c).as(c.toLowerCase())): _*).show()
 
-    val stockDate = df.select(renameColumns: _*)
+    // Add a column containing the diff between `open` and `close`
+    val stockData = df.select(renameColumns: _*)
       .withColumn("diff", col("close") - col("open"))
+
+    stockData.show()
+
+    // Filter to days when the `close` price was more than 10% higher than the open price
+
 
   }
 }
