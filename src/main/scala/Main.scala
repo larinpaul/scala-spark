@@ -201,5 +201,20 @@ object Main {
 
     stockDataFilter.show()
 
+
+    // Part 10: Concept (i) What is Spark?
+
+    // - Why does it take so long? Why do we need to bind to a port?
+    // - Spark is a distributed processing engine: Our code can run locally,
+    // or on dozens or even hundreds of machines
+    // - (BGs of data or Billions of rows)
+    // - Usually used as processing engine on data lakes
+    // (file-based large-scale data stores);
+    // It's not a database
+    // - Master-Slave architecture: Driver does planning of work
+    // and assigns tasks to workers (declarative, SQL-like API)
+    // - Too much overhead for using with small csv files like on our example
+    // - However, that's how we develop code
+
   }
 }
