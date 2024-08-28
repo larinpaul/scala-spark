@@ -237,6 +237,11 @@ object Main {
       .sort($"maxClose".desc)
       .show()
 
+    // Using shorthands for aggregations
+    stockData
+      .groupBy(year($"date").as("year"))
+      .max("close", "high")
+      .show()
 
   }
 }
