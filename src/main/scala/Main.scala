@@ -217,5 +217,17 @@ object Main {
     // - However, that's how we develop code
 
 
+    // Part 11: DSL (vi) Sort, Group, Aggregate
+
+    // - Until now, we have a good understanding how the API is organized
+    // - Select, transform, rename columns (transforming DataFrame on each row)
+    // - In this video: Working with multiple rows in a DataFrame
+    // - Sort on one or multiple columns (asc/desc)
+    // - GroupBy one or multiple columns and applying an aggregation on groups
+    // - Available aggregation functions can be found in `sql.functions`
+    // (for some exists a shorthand `count`, `sum`)
+    // Assignment: Average and highest closing prices per year,
+    // sorted with the highest prices first
+
   }
 }
