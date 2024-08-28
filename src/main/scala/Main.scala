@@ -1,7 +1,7 @@
 package org.larinpaul.sparkdev
 
 import org.apache.spark.sql.{SparkSession, functions}
-import org.apache.spark.sql.functions.{col, current_timestamp, expr, lit}
+import org.apache.spark.sql.functions.{col, current_timestamp, expr, lit, year}
 import org.apache.spark.sql.types.StringType // SparkSession is part of the sql package...
 
 object Main {
@@ -228,6 +228,12 @@ object Main {
     // (for some exists a shorthand `count`, `sum`)
     // Assignment: Average and highest closing prices per year,
     // sorted with the highest prices first
+
+    // $ is an implicit
+    import spark.implicits._
+    stockData
+      .groupBy(year($"date"))
+      .agg(functions.max($"close"), functions.avg($"close"))
 
   }
 }
