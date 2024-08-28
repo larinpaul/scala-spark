@@ -232,8 +232,8 @@ object Main {
     // $ is an implicit
     import spark.implicits._
     stockData
-      .groupBy(year($"date"))
-      .agg(functions.max($"close"), functions.avg($"close"))
+      .groupBy(year($"date").as("year"))
+      .agg(functions.max($"close").as("maxClose"), functions.avg($"close").as("avgClose"))
       .show()
 
   }
