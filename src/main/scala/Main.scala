@@ -234,6 +234,7 @@ object Main {
     stockData
       .groupBy(year($"date"))
       .agg(functions.max($"close"), functions.avg($"close"))
+      .show()
 
   }
 }
