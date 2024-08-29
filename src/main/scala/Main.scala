@@ -243,5 +243,17 @@ object Main {
       .max("close", "high")
       .show()
 
+
+    // Part 12: DSL (vii) Window functions
+
+    // - With `groupBy` we could only retrieve the grouping columns
+    // and the aggregation column (`year`, `maxClose`)
+    // - What if we wanted to see the entire record of the days
+    // with the highest closing prices (e.g. `open`, `highest` values)?
+    // - Explore windows functions as construct to apply a partitioned view
+    // and allowing arbitrary transformations on the grouped data
+    // - Assignment: Find rows of the highest closing price in each year,
+    // sorted with the highest closing prices first
+
   }
 }
