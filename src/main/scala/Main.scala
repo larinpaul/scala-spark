@@ -1,7 +1,8 @@
 package org.larinpaul.sparkdev
 
+import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.{SparkSession, functions}
-import org.apache.spark.sql.functions.{col, current_timestamp, expr, lit, year}
+import org.apache.spark.sql.functions.{col, current_timestamp, expr, lit, row_number, year}
 import org.apache.spark.sql.types.StringType // SparkSession is part of the sql package...
 
 object Main {
@@ -254,6 +255,14 @@ object Main {
     // and allowing arbitrary transformations on the grouped data
     // - Assignment: Find rows of the highest closing price in each year,
     // sorted with the highest closing prices first
+
+    val window = Window.partitionBy(year($"date").as("year")).orderBy($"close".desc)
+    stockData
+      .withColumn("rank", row_number().over(window))
+      .filter($"rank" === 1)
+      .sort($"close".desc)
+      .show
+
 
   }
 }
