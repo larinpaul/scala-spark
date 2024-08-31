@@ -296,5 +296,15 @@ object Main {
     // - The result is an optimized logical plan
 
 
+    val stockDataToo = df.select(renameColumns: _*)
+
+    import spark.implicits._
+    val windowToo = Window.partitionBy(year($"date").as("year")).orderBy($"close".desc)
+    stockDataToo
+      .withColumn("rank", row_number().over(windowToo))
+      .filter($"rank" === 1)
+      .sort($"close".desc)
+      .explain(extended = true)
+
   }
 }
