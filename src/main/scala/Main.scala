@@ -350,7 +350,12 @@ object Main {
 //    +- Project [Date#17 AS date#291, Open#18 AS open#292, High#19 AS high#293, Low#20 AS low#294, Close#21 AS close#295, Adj Close#22 AS adjClose#296, Volume#23 AS volume#297]
 //    +- FileScan csv [Date#17,Open#18,High#19,Low#20,Close#21,Adj Close#22,Volume#23] Batched: false, DataFilters: [], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/C:/projects/2024/scala/scala-spark/scala-spark/data/A.csv], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<Date:date,Open:double,High:double,Low:double,Close:double,Adj Close:double,Volume:int>
 
-
+    /// Lazy evaluations // Lazy evaluation is when an expression is delayed until its value is actually needed
+    // - There are transformations and actions
+    // - A transformation simply adds a step to the AST without doing anything more
+    // - An action in turn is called on the result Dataset
+    // and actually triggers the calculation of the result by executing the AST
+    // 00
 
 
   }
