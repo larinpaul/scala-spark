@@ -306,6 +306,49 @@ object Main {
       .sort($"close".desc)
       .explain(extended = true)
 
+//    24/08/30 21:42:47 INFO FileSourceStrategy: Post-Scan Filters:
+//    == Parsed Logical Plan ==
+//    'Sort ['close DESC NULLS LAST], true
+//    +- Filter (rank#653 = 1)
+//    +- Project [date#291, open#292, high#293, low#294, close#295, adjClose#296, volume#297, rank#653]
+//    +- Project [date#291, open#292, high#293, low#294, close#295, adjClose#296, volume#297, rank#653, rank#653]
+//    +- Window [row_number() windowspecdefinition(year(date#291), close#295 DESC NULLS LAST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS rank#653], [year(date#291)], [close#295 DESC NULLS LAST]
+//    +- Project [date#291, open#292, high#293, low#294, close#295, adjClose#296, volume#297]
+//    +- Project [Date#17 AS date#291, Open#18 AS open#292, High#19 AS high#293, Low#20 AS low#294, Close#21 AS close#295, Adj Close#22 AS adjClose#296, Volume#23 AS volume#297]
+//    +- Relation [Date#17,Open#18,High#19,Low#20,Close#21,Adj Close#22,Volume#23] csv
+//
+//    == Analyzed Logical Plan ==
+//    date: date, open: double, high: double, low: double, close: double, adjClose: double, volume: int, rank: int
+//    Sort [close#295 DESC NULLS LAST], true
+//    +- Filter (rank#653 = 1)
+//    +- Project [date#291, open#292, high#293, low#294, close#295, adjClose#296, volume#297, rank#653]
+//    +- Project [date#291, open#292, high#293, low#294, close#295, adjClose#296, volume#297, rank#653, rank#653]
+//    +- Window [row_number() windowspecdefinition(year(date#291), close#295 DESC NULLS LAST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS rank#653], [year(date#291)], [close#295 DESC NULLS LAST]
+//    +- Project [date#291, open#292, high#293, low#294, close#295, adjClose#296, volume#297]
+//    +- Project [Date#17 AS date#291, Open#18 AS open#292, High#19 AS high#293, Low#20 AS low#294, Close#21 AS close#295, Adj Close#22 AS adjClose#296, Volume#23 AS volume#297]
+//    +- Relation [Date#17,Open#18,High#19,Low#20,Close#21,Adj Close#22,Volume#23] csv
+//
+//    == Optimized Logical Plan ==
+//    Sort [close#295 DESC NULLS LAST], true
+//    +- Filter (rank#653 = 1)
+//    +- Window [row_number() windowspecdefinition(year(date#291), close#295 DESC NULLS LAST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS rank#653], [year(date#291)], [close#295 DESC NULLS LAST]
+//    +- WindowGroupLimit [year(date#291)], [close#295 DESC NULLS LAST], row_number(), 1
+//    +- Project [Date#17 AS date#291, Open#18 AS open#292, High#19 AS high#293, Low#20 AS low#294, Close#21 AS close#295, Adj Close#22 AS adjClose#296, Volume#23 AS volume#297]
+//    +- Relation [Date#17,Open#18,High#19,Low#20,Close#21,Adj Close#22,Volume#23] csv
+//
+//    == Physical Plan ==
+//      AdaptiveSparkPlan isFinalPlan=false
+//    +- Sort [close#295 DESC NULLS LAST], true, 0
+//    +- Exchange rangepartitioning(close#295 DESC NULLS LAST, 200), ENSURE_REQUIREMENTS, [plan_id=437]
+//    +- Filter (rank#653 = 1)
+//    +- Window [row_number() windowspecdefinition(year(date#291), close#295 DESC NULLS LAST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS rank#653], [year(date#291)], [close#295 DESC NULLS LAST]
+//    +- WindowGroupLimit [year(date#291)], [close#295 DESC NULLS LAST], row_number(), 1, Final
+//    +- Sort [year(date#291) ASC NULLS FIRST, close#295 DESC NULLS LAST], false, 0
+//    +- Exchange hashpartitioning(year(date#291), 200), ENSURE_REQUIREMENTS, [plan_id=431]
+//    +- WindowGroupLimit [year(date#291)], [close#295 DESC NULLS LAST], row_number(), 1, Partial
+//    +- Sort [year(date#291) ASC NULLS FIRST, close#295 DESC NULLS LAST], false, 0
+//    +- Project [Date#17 AS date#291, Open#18 AS open#292, High#19 AS high#293, Low#20 AS low#294, Close#21 AS close#295, Adj Close#22 AS adjClose#296, Volume#23 AS volume#297]
+//    +- FileScan csv [Date#17,Open#18,High#19,Low#20,Close#21,Adj Close#22,Volume#23] Batched: false, DataFilters: [], Format: CSV, Location: InMemoryFileIndex(1 paths)[file:/C:/projects/2024/scala/scala-spark/scala-spark/data/A.csv], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<Date:date,Open:double,High:double,Low:double,Close:double,Adj Close:double,Volume:int>
 
 
 
