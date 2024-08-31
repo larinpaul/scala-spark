@@ -358,5 +358,19 @@ object Main {
     // 00
 
 
+    // Part 14: Tests (i) Why do we need tests?
+
+    // - Do you know whether the result from our previous assignment was correct?
+    // - I don't, but I hope ;) (is that professional?)
+    // - So we could gain certainty for now by inspecting the csv dataset
+    // and check against our result
+    // - What if the code or the data changes? Do it again? How many times?
+    // (This is called manual testing or an engineer's nightmare)
+    // - High-quality software = Composition of small well-functioning & tested units
+    // - What's a unit test?
+    // - Automated way of assuring that our units do
+    // what they are supposed to do (testing their interface)
+    // - So, it's a very, very essential skill for you to learn to do efficiently
+
   }
 }
