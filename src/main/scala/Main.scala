@@ -264,5 +264,37 @@ object Main {
       .show
 
 
+    // Part 13: Concepts (ii): Partitions, AST, optimization, lazy evaluation
+
+    /// Partitioning
+    // - How can Spark distribute our workload among many machines?
+    // we have to divide the work after all ...
+    // - Let's look at a simple example: Sum all values from one column -
+    // how would you do it?
+    // - Partitioning = Level of parallelism; we aim for equal sized // Level of parallelism = number of partitions
+    // but ... often not possible and one major issue with performance
+    // - There will be one task for processing each partition;
+    // The task ... scheduled on the executors by the driver
+
+    /// AST, logical plan & the Catalyst
+    // - Spark SQL provides us with a fully declarative & structured API
+    // - Meaning it defines operators which we can use to tell Spark
+    // how the resul can be derived form the input (`withColumn`, `groupBy`, `count`)
+    // - Spark SQL is also called the structured API as it deals with structured data
+    // as Datasets have a schema
+    // - Therefore, Spark knows what's in the columns of a DataFrame
+    // - By calling the API, we chain these operators, while Spark assembles
+    // an abstract internal representation: The AST (abstract syntax tree)
+    // - The AST is in a way the computation plan of the result form the input;
+    // it describes how each intermediate Dataset can be derived from its parents
+    // - The AST represents our query in a logical form; therefore,
+    // it's called the logical plan
+    // - As the API is used only to assemble an internal logical representation, it
+    // does not matter which API we use (Scala, Python, R, SQL expressions)
+    // - SparkSQL also has implemented a query optimizer (the Catalyst)
+    // the logical plan and applies general optimization on it
+    // - The result is an optimized logical plan
+
+
   }
 }
