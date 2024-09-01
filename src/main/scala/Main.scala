@@ -449,6 +449,7 @@ object Main {
 
   def add(x: Int, y: Int): Int = x + y
 
+  def addFake(x: Int, y: Int): Int = x - y
 
 }
 

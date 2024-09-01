@@ -9,4 +9,10 @@ class FirstTest extends AnyFunSuite {
     assert(result == 5)
   }
 
+  test("addFake(2, 3) return 5") {
+    val result = Main.addFake(2, 3)
+    assert(result == 5)
+  }
+
+
 }
