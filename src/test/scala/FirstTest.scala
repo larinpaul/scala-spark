@@ -1,7 +1,11 @@
 package org.larinpaul.sparkdev
 
-class FirstTest {
+import org.scalatest.funsuite.AnyFunSuite
 
+class FirstTest extends AnyFunSuite {
 
+  test("First unit test") {
+
+  }
 
 }
