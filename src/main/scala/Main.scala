@@ -431,15 +431,16 @@ object Main {
       col("Volume").as("volume")
     )
 
-    val stockDate = df.select(renameColumns: _*)
+    val stockData = df.select(renameColumns: _*)
 
     import spark.implicits._
     val window = Window.partitionBy(year($"date").as("year")).orderBy($"close".desc)
-    stockDate
+    stockData
       .withColumn("rank", row_number().over(window))
       .filter($"rank" === 1)
       .sort($"close".desc)
-      .explain(extended = true)
+      .show()
+//      .explain(extended = true)
 
     println("Soon we will test this...")
 
