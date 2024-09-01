@@ -408,7 +408,6 @@ import org.apache.spark.sql.types.StringType // SparkSession is part of the sql 
 object Main {
   def main(args: Array[String]): Unit = {
 
-    println("Soon we will test this...")
 
     val spark = SparkSession.builder()
       .appName("scala-spark")
@@ -442,7 +441,7 @@ object Main {
 //      .show()
       .explain(extended = true)
 
-    println("Soon we will test this...")
+
 
   }
 
