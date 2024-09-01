@@ -375,7 +375,14 @@ object Main {
 
     // Part 15: Tests (ii) Out first unit test
 
-
+    // - Add a test dependency: [scala-test](https://www.scalatest.org/)
+    // - Write our first unit test
+    // - What is testable code?
+    // - We would like to call a unit which contains a small
+    // self-contained set of functionality
+    // - Therefore, we have to provide the full context of the unit (class, parameters)
+    // - Therefore, we want to keep it as small as possible
+    // - Refactor our code to be easily testable
 
   }
 }
