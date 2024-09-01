@@ -439,8 +439,8 @@ object Main {
       .withColumn("rank", row_number().over(window))
       .filter($"rank" === 1)
       .sort($"close".desc)
-      .show()
-//      .explain(extended = true)
+//      .show()
+      .explain(extended = true)
 
     println("Soon we will test this...")
 
