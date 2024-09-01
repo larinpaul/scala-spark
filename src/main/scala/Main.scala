@@ -419,7 +419,7 @@ object Main {
     val df: DataFrame = spark.read
       .option("header", value = true)
       .option("inferSchema", value = true)
-      .csv("data/AAPI.csv")
+      .csv("data/A.csv")
 
     val renameColumns = List(
       col("Date").as("date"),
