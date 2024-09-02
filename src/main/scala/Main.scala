@@ -432,15 +432,15 @@ object Main {
 
     val stockData = df.select(renameColumns: _*)
 
-    highestClosingPricesPerYear(stockData)
+    val highestClosingPricesPerYear = highestClosingPricesPerYear(stockData)
 
   }
 
 
-  def highestClosingPricesPerYear(stockData: DataFrame): Unit = {
-    import spark.implicits._
+  def highestClosingPricesPerYear(df: DataFrame): DataFrame = {
+    import df.sparkSession.implicits._
     val window = Window.partitionBy(year($"date").as("year")).orderBy($"close".desc)
-    stockData
+    df
       .withColumn("rank", row_number().over(window))
       .filter($"rank" === 1)
       .sort($"close".desc)
