@@ -1,6 +1,6 @@
 package org.larinpaul.sparkdev
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{Row, SparkSession}
 import org.scalatest.funsuite.AnyFunSuite
 
 class FirstTest extends AnyFunSuite {
@@ -13,6 +13,11 @@ class FirstTest extends AnyFunSuite {
 
 
   test("add(2, 3) return 5") {
+    // Creating a test DataFrame with schema and encoder
+    val testRows = Seq(
+      Row()
+    )
+    val testDf = spark.createDataset()
     Main.highestClosingPricesPerYear()
   }
 
