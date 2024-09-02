@@ -447,6 +447,19 @@ object Main {
       //      .show()
       .explain(extended = true)
   }
+
+
+  // Part 16: Tests (iii) Write a DataFrame test
+
+  // - We want to test that our transformations and therefore
+  // our resulting DataFrame is correct
+  // - Create a DataFrame with test data (date, open, close)
+  // - Not all columns are required by the interface of the unit
+  // (dynamically typed)
+  // - Using matchers to assert result; Here, we can choose which
+  // columns to test for (exact match or subset)
+  // - Add JVM option `--add-exports java.base/sun.util.calendar=ALL-UNNAMED`
+
 }
 
 
