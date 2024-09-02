@@ -36,7 +36,8 @@ class FirstTest extends AnyFunSuite {
     val testDf = spark.createDataset(testRows)
 
     // Calling the unit under test
-    val result = Main.highestClosingPricesPerYear(testDf)
+    val resultList = Main.highestClosingPricesPerYear(testDf)
+      .collect() // .collect() will return an array of rows
   }
 
 
