@@ -1,7 +1,7 @@
 package org.larinpaul.sparkdev
 
 import org.apache.spark.sql.types.{DateType, DoubleType, StructField, StructType}
-import org.apache.spark.sql.{Row, SparkSession}
+import org.apache.spark.sql.{Encoders, Row, SparkSession}
 import org.scalatest.funsuite.AnyFunSuite
 
 import java.sql.Date
@@ -29,8 +29,11 @@ class FirstTest extends AnyFunSuite {
       Row(Date.valueOf("2023-03-01"), 1.0, 2.0),
       Row(Date.valueOf("2023-01-12"), 1.0, 3.0)
     )
+    // Creating a test DataFrame using the schema and encoder
+    implicit val encoder = Encoders.row(schema)
+
     // Creating a test DataFrame with schema and encoder
-    val testDf = spark.createDataset()
+    val testDf = spark.createDataset(testRows)
     Main.highestClosingPricesPerYear()
   }
 
