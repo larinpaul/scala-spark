@@ -34,7 +34,9 @@ class FirstTest extends AnyFunSuite {
 
     // Creating a test DataFrame with schema and encoder
     val testDf = spark.createDataset(testRows)
-    Main.highestClosingPricesPerYear()
+
+    // Calling the unit under test
+    val result = Main.highestClosingPricesPerYear(testDf)
   }
 
 
