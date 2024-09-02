@@ -3,6 +3,8 @@ package org.larinpaul.sparkdev
 import org.apache.spark.sql.types.{DateType, DoubleType, StructField, StructType}
 import org.apache.spark.sql.{Encoder, Encoders, Row, SparkSession}
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.must.Matchers.contain
+import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 
 import java.sql.Date
 
@@ -42,9 +44,17 @@ class FirstTest extends AnyFunSuite {
     // Creating a test DataFrame with schema and encoder
     val testDf = spark.createDataset(testRows)
 
-    // Calling the unit under test
-    val resultList = Main.highestClosingPricesPerYear(testDf)
-      .collect() // .collect() will return an array of rows
+//    // Calling the unit under test
+//    val resultList = Main.highestClosingPricesPerYear(testDf)
+//      .collect() // .collect() will return an array of rows
+
+    // Asserting result correctness
+    // Comparing actual output with expected output
+    val actualRows = Main.highestClosingPricesPerYear(testDf)
+      .collect()
+    // That's our assertion
+    actualRows should contain allElementsOf(expected)
+
   }
 
 
