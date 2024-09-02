@@ -53,8 +53,8 @@ class FirstTest extends AnyFunSuite {
     val actualRows = Main.highestClosingPricesPerYear(testDf)
       .collect()
     // That's our assertion
-    actualRows should contain allElementsOf(expected)
 
+    actualRows should contain theSameElementsAs expected
   }
 
 
