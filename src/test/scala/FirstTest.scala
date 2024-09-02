@@ -29,6 +29,13 @@ class FirstTest extends AnyFunSuite {
       Row(Date.valueOf("2023-03-01"), 1.0, 2.0),
       Row(Date.valueOf("2023-01-12"), 1.0, 3.0)
     )
+
+    // Defining the expected output data
+    val expected = Seq(
+      Row(Date.valueOf("2022-01-12"), 1.0, 2.0),
+      Row(Date.valueOf("2023-01-12"), 1.0, 3.0)
+    )
+
     // Creating a test DataFrame using the schema and encoder
     implicit val encoder: Encoder[Row] = Encoders.row(schema)
 
