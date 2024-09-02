@@ -1,7 +1,7 @@
 package org.larinpaul.sparkdev
 
 import org.apache.spark.sql.types.{DateType, DoubleType, StructField, StructType}
-import org.apache.spark.sql.{Encoders, Row, SparkSession}
+import org.apache.spark.sql.{Encoder, Encoders, Row, SparkSession}
 import org.scalatest.funsuite.AnyFunSuite
 
 import java.sql.Date
@@ -30,7 +30,7 @@ class FirstTest extends AnyFunSuite {
       Row(Date.valueOf("2023-01-12"), 1.0, 3.0)
     )
     // Creating a test DataFrame using the schema and encoder
-    implicit val encoder = Encoders.row(schema)
+    implicit val encoder: Encoder[Row] = Encoders.row(schema)
 
     // Creating a test DataFrame with schema and encoder
     val testDf = spark.createDataset(testRows)
