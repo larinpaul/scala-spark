@@ -432,25 +432,21 @@ object Main {
 
     val stockData = df.select(renameColumns: _*)
 
+    highestClosingPricesPerYear(stockData)
+
+  }
+
+
+  def highestClosingPricesPerYear(stockData: DataFrame): Unit = {
     import spark.implicits._
     val window = Window.partitionBy(year($"date").as("year")).orderBy($"close".desc)
     stockData
       .withColumn("rank", row_number().over(window))
       .filter($"rank" === 1)
       .sort($"close".desc)
-//      .show()
+      //      .show()
       .explain(extended = true)
-
-
-
-
-
   }
-
-  def add(x: Int, y: Int): Int = x + y
-
-  def addFake(x: Int, y: Int): Int = x - y
-
 }
 
 
