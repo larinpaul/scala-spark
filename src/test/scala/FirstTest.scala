@@ -55,6 +55,20 @@ class FirstTest extends AnyFunSuite {
     // That's our assertion
 
     actualRows should contain theSameElementsAs expected
+
+
+    // Adding configuration:
+    // Configuration - Application - Templates - Scala Test
+    // previously we added
+    // -add-exports
+    // java.base/sun.nio.ch=ALL-UNNAMED
+    // Now we also have to add the calendar so that we can access them
+    // even though they're not public anymore in Java 17
+    // --add-exports
+    // java.base/sun.nio.ch=ALL-UNNAMED
+    // --add-exports
+    // java.base/sun.util.calendar=ALL-UNNAMED
+
   }
 
 
