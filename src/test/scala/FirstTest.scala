@@ -23,7 +23,7 @@ class FirstTest extends AnyFunSuite {
     StructField("close", DoubleType, nullable = true)
   ))
 
-  test("add(2, 3) return 5") {
+  test("returns highest closing prices for year") {
 
     // Specifying test data
     val testRows = Seq(
