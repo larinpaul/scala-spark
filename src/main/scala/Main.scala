@@ -432,7 +432,7 @@ object Main {
 
     val stockData = df.select(renameColumns: _*)
 
-    val highestClosingPricesPerYear = highestClosingPricesPerYear(stockData)
+    val highestClosingPrices = highestClosingPricesPerYear(stockData)
 
   }
 
