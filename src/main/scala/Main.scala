@@ -444,8 +444,6 @@ object Main {
       .withColumn("rank", row_number().over(window))
       .filter($"rank" === 1)
       .sort($"close".desc)
-      //      .show()
-      .explain(extended = true)
   }
 
 
