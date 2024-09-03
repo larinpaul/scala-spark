@@ -443,6 +443,7 @@ object Main {
     df
       .withColumn("rank", row_number().over(window))
       .filter($"rank" === 1)
+      .drop("rank")
       .sort($"close".desc)
   }
 
